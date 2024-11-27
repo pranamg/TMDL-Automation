@@ -1,0 +1,16 @@
+name: Validate TMDL
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run validation script
+        run: python scripts/validate_tmdl.py
