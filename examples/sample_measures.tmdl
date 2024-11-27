@@ -1,0 +1,24 @@
+table Sales
+
+    measure "Total Sales" = SUM(Sales[Amount])
+        formatString: "#,##0.00"
+        displayFolder: "Sales Metrics"
+        description: "This measure calculates the total sales amount across all transactions."
+        isHidden: false
+        isPrivate: false
+        detailRowsExpression: SUMMARIZE(Sales, Sales[OrderID], Sales[OrderDate])
+        annotations: {
+            category: "KeyMetric",
+            source: "ETL Process"
+        }
+        formatStringExpression: IF([Total Sales] > 1000, "#,##0", "#.00")
+        dataType: double
+        summarizeBy: sum
+        properties: {
+            customLabel: "Critical Metric",
+            priority: "High"
+        }
+        isAggDependent: true
+        metadata: {
+            tags: ["Finance", "High Priority"]
+        }
