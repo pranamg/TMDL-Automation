@@ -1,0 +1,3 @@
+/// Scripts for setting table storage mode (Import/DirectQuery/Dual).
+createOrReplace
+
